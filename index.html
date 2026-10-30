@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LUME | Contemporary Fashion</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f1eb;
+            color: #171717;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 22px 6%;
+
+            background: rgba(245, 241, 235, 0.95);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #ddd6cd;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            letter-spacing: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-icons button {
+            border: none;
+            background: transparent;
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 90vh;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 8%;
+        }
+
+        .small-title {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(60px, 9vw, 125px);
+
+            font-weight: normal;
+            line-height: 0.9;
+
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            max-width: 480px;
+
+            color: #666;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+        }
+
+        .hero-button {
+            width: fit-content;
+
+            margin-top: 35px;
+
+            padding: 16px 28px;
+
+            background: #171717;
+            color: white;
+
+            border: 1px solid #171717;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: transparent;
+            color: #171717;
+        }
+
+
+        /* =========================
+           HERO IMAGE AREA
+        ========================== */
+
+        .hero-image {
+            min-height: 700px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d4c3b0,
+                    #8a8178
+                );
+        }
+
+        .fashion-shape {
+            position: absolute;
+
+            top: 7%;
+            left: 15%;
+            right: 15%;
+            bottom: 0;
+
+            background:
+                linear-gradient(
+                    150deg,
+                    #eee6dc 0 27%,
+                    #292725 27% 65%,
+                    #a99680 65%
+                );
+
+            transform: skewX(-7deg);
+        }
+
+        .hero-brand {
+            position: absolute;
+
+            right: 7%;
+            bottom: 7%;
+
+            color: white;
+
+            font-family: Georgia, serif;
+
+            font-size: 60px;
+
+            letter-spacing: 8px;
+        }
+
+
+        /* =========================
+           GENERAL SECTION
+        ========================== */
+
+        .section {
+            padding: 110px 7%;
+        }
+
+        .section-heading {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: end;
+
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(42px, 6vw, 75px);
+
+            font-weight: normal;
+        }
+
+        .section-heading span {
+            font-size: 11px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* =========================
+           FILTER BUTTONS
+        ========================== */
+
+        .filters {
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 35px;
+        }
+
+        .filter {
+            padding: 11px 18px;
+
+            border: 1px solid #c8c0b6;
+
+            background: transparent;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .filter:hover,
+        .filter.active {
+            background: #171717;
+
+            color: white;
+
+            border-color: #171717;
+        }
+
+
+        /* =========================
+           PRODUCT GRID
+        ========================== */
+
+        .products {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .product {
+            min-height: 500px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #ded5ca;
+        }
+
+        .product:nth-child(2) {
+            background: #d0d0ca;
+        }
+
+        .product:nth-child(3) {
+            background: #c6b5a2;
+        }
+
+        .product-image {
+            position: absolute;
+
+            top: 8%;
+            left: 15%;
+            right: 15%;
+            bottom: 0;
+
+            transition: 0.5s;
+        }
+
+        .product:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-one {
+            background:
+                linear-gradient(
+                    150deg,
+                    #ddd1c3 0 35%,
+                    #202020 35% 75%,
+                    #8e8175 75%
+                );
+
+            clip-path:
+                polygon(
+                    25% 0,
+                    78% 0,
+                    100% 100%,
+                    0 100%
+                );
+        }
+
+        .product-two {
+            background:
+                linear-gradient(
+                    155deg,
+                    #252321 0 45%,
+                    #b8a58e 45% 72%,
+                    #e4ded5 72%
+                );
+
+            clip-path:
+                polygon(
+                    12% 0,
+                    88% 8%,
+                    100% 100%,
+                    0 100%
+                );
+        }
+
+        .product-three {
+            background:
+                linear-gradient(
+                    145deg,
+                    #aaa095 0 32%,
+                    #eee9e1 32% 60%,
+                    #292725 60%
+                );
+
+            clip-path:
+                polygon(
+                    18% 0,
+                    82% 0,
+                    100% 100%,
+                    0 100%
+                );
+        }
+
+        .product-info {
+            position: absolute;
+
+            left: 22px;
+            right: 22px;
+            bottom: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           PHILOSOPHY
+        ========================== */
+
+        .philosophy {
+            padding: 130px 8%;
+
+            text-align: center;
+
+            background: #171717;
+
+            color: white;
+        }
+
+        .philosophy h2 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(45px, 7vw, 95px);
+
+            font-weight: normal;
+
+            line-height: 1;
+
+            margin-bottom: 30px;
+        }
+
+        .philosophy p {
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.8;
+
+            color: #aaa;
+        }
+
+
+        /* =========================
+           STORY
+        ========================== */
+
+        .story {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            min-height: 650px;
+        }
+
+        .story-image {
+            background:
+                linear-gradient(
+                    140deg,
+                    #a69a8d,
+                    #e3ddd5 50%,
+                    #302d2a 50%
+                );
+
+            position: relative;
+        }
+
+        .story-image::after {
+            content: "L";
+
+            position: absolute;
+
+            top: 12%;
+            left: 12%;
+            right: 12%;
+            bottom: 12%;
+
+            border: 1px solid rgba(255,255,255,0.7);
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            font-family: Georgia, serif;
+
+            font-size: 190px;
+        }
+
+        .story-content {
+            padding: 10%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .story-content h2 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(45px, 6vw, 85px);
+
+            font-weight: normal;
+
+            line-height: 0.95;
+
+            margin: 15px 0 30px;
+        }
+
+        .story-content p {
+            max-width: 480px;
+
+            color: #666;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           JOURNAL / NEWSLETTER
+        ========================== */
+
+        .newsletter {
+            padding: 110px 7%;
+
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(45px, 6vw, 70px);
+
+            font-weight: normal;
+
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: #666;
+        }
+
+        .newsletter-form {
+            display: flex;
+
+            max-width: 550px;
+
+            margin: 35px auto;
+
+            border-bottom: 1px solid #222;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            padding: 16px;
+
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            border: none;
+
+            background: transparent;
+
+            padding: 16px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 35px 7%;
+
+            border-top: 1px solid #d6cec4;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                padding: 18px 6%;
+            }
+
+            .logo {
+                font-size: 23px;
+
+                letter-spacing: 5px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 70px 7%;
+            }
+
+            .hero-image {
+                min-height: 520px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .story {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                min-height: 450px;
+            }
+
+            .section {
+                padding: 75px 6%;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="logo">
+            LUME
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#collection">
+                Collection
+            </a>
+
+            <a href="#story">
+                Our Story
+            </a>
+
+            <a href="#journal">
+                Journal
+            </a>
+
+        </div>
+
+        <div class="nav-icons">
+
+            <button onclick="searchLume()">
+                ⌕
+            </button>
+
+            <button onclick="showWishlist()">
+                ♡
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Lume / Collection 01
+            </div>
+
+            <h1>
+                Quietly<br>
+                distinct.
+            </h1>
+
+            <p>
+                Modern clothing shaped by clean lines,
+                thoughtful details and effortless confidence.
+                Discover pieces designed to live beautifully
+                beyond the season.
+            </p>
+
+            <a href="#collection" class="hero-button">
+                Explore Collection
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <div class="fashion-shape"></div>
+
+            <div class="hero-brand">
+                LUME
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COLLECTION
+    ========================== -->
+
+    <section class="section" id="collection">
+
+        <div class="section-heading">
+
+            <h2>
+                New Arrivals
+            </h2>
+
+            <span>
+                01 — 03
+            </span>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                onclick="filterProducts('all', this)">
+                All
+            </button>
+
+            <button
+                class="filter"
+                onclick="filterProducts('women', this)">
+                Women
+            </button>
+
+            <button
+                class="filter"
+                onclick="filterProducts('unisex', this)">
+                Unisex
+            </button>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <article
+                class="product"
+                data-category="women">
+
+                <div class="product-image product-one">
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        Tailored Form
+                    </span>
+
+                    <span>
+                        ₹3,490
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article
+                class="product"
+                data-category="unisex">
+
+                <div class="product-image product-two">
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        Soft Structure
+                    </span>
+
+                    <span>
+                        ₹2,990
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article
+                class="product"
+                data-category="women">
+
+                <div class="product-image product-three">
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        After Dark
+                    </span>
+
+                    <span>
+                        ₹4,290
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PHILOSOPHY
+    ========================== -->
+
+    <section class="philosophy">
+
+        <div class="small-title">
+            The Lume Philosophy
+        </div>
+
+        <h2>
+            Less noise.<br>
+            More presence.
+        </h2>
+
+        <p>
+            We believe style becomes powerful when it
+            feels natural. Lume brings together refined
+            silhouettes, considered textures and versatile
+            pieces made for your everyday rhythm.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         OUR STORY
+    ========================== -->
+
+    <section class="story" id="story">
+
+
+        <div class="story-image">
+        </div>
+
+
+        <div class="story-content">
+
+            <div class="small-title">
+                About Lume
+            </div>
+
+            <h2>
+                Made for<br>
+                your light.
+            </h2>
+
+            <p>
+                Lume is a contemporary fashion label built
+                around understated luxury. From the first
+                sketch to the final stitch, every piece is
+                imagined with balance, comfort and character
+                in mind.
+            </p>
+
+            <a href="#journal" class="hero-button">
+                Read Our Story
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NEWSLETTER
+    ========================== -->
+
+    <section class="newsletter" id="journal">
+
+        <div class="small-title">
+            Lume Journal
+        </div>
+
+        <h2>
+            Stay in the light.
+        </h2>
+
+        <p>
+            New collections, styling notes and stories —
+            delivered occasionally.
+        </p>
+
+
+        <form
+            class="newsletter-form"
+            onsubmit="subscribe(event)">
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Your email address"
+                required>
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <span>
+            © 2026 LUME
+        </span>
+
+        <span>
+            Contemporary Clothing / India
+        </span>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function searchLume() {
+
+            alert(
+                "LUME Search\n\n" +
+                "Try searching for dresses, shirts, " +
+                "tailoring or new arrivals."
+            );
+
+        }
+
+
+        function showWishlist() {
+
+            alert(
+                "Your LUME wishlist is currently empty."
+            );
+
+        }
+
+
+        function filterProducts(category, button) {
+
+            document
+                .querySelectorAll(".filter")
+                .forEach(function(btn) {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+            button.classList.add("active");
+
+
+            document
+                .querySelectorAll(".product")
+                .forEach(function(product) {
+
+                    if (
+                        category === "all" ||
+                        product.dataset.category === category
+                    ) {
+
+                        product.style.display = "block";
+
+                    } else {
+
+                        product.style.display = "none";
+
+                    }
+
+                });
+
+        }
+
+
+        function subscribe(event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email");
+
+            alert(
+                "Thank you for joining LUME."
+            );
+
+            email.value = "";
+
+        }
+
+    </script>
+
+</body>
+</html>
